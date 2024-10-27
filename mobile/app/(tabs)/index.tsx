@@ -15,33 +15,42 @@ import {useState} from 'react';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import {getShuffledImages} from "@/constants/data";
-import {createBoard} from "@/constants/data";
+import {getShuffledEasyImages, getShuffledHardImages, createEasyBoard, createHardBoard} from "@/constants/data";
+
 import Header from "@/components/game/header";
 import GameBoard from "@/components/game/GameBoard";
 
 export default function HomeScreen() {
 
+  const [level, setLevel] = useState("easy");
   const [wrongFlips, setWrongFlips] = useState(0);
-  const [shuffeledImages,setShuffeledImages] = useState(()=>getShuffledImages());
-  const [imagesBoard, setImagesBoard] = useState(()=>createBoard());
+  const [shuffeledImages,setShuffeledImages] = useState(()=> level=="easy" ? getShuffledEasyImages() : getShuffledHardImages() );
+  
+  const [imagesBoard, setImagesBoard] = useState(()=> level=="easy" ? createEasyBoard() : createHardBoard();
 
-  const newGame = () => {
-    setShuffeledImages(()=>getShuffledImages());
+  const newEasyGame = () => {
+    setShuffeledImages(()=>getShuffledEasyImages());
     setWrongFlips(0); 
-    setImagesBoard(()=>createBoard())
+    setImagesBoard(()=>createEasyBoard())
   }
+  
+  const newHardGame = () => {
+    setShuffeledImages(() => getShuffledHardImages());
+    setWrongFlips(0);
+    setImagesBoard(() => createHardBoard())
+    }
 
   return (
     <View style={{backgroundColor:"#555", height:"100vh"}}>
-      <Header wrongFlips={wrongFlips} newGame={newGame}/>
-        <GameBoard 
-          setWrongFlips={setWrongFlips} 
-          shuffeledImages={shuffeledImages}
-          setShuffeledImages={setShuffeledImages}
-          imagesBoard={imagesBoard}
-          setImagesBoard={setImagesBoard}
-        />
+      <Header wrongFlips={wrongFlips} newEasyGame={newEasyGame} newHardGame={newHardGame}/>
+      <GameBoard 
+        level={level}
+        setWrongFlips={setWrongFlips} 
+        shuffeledImages={shuffeledImages}
+        setShuffeledImages={setShuffeledImages}
+        imagesBoard={imagesBoard}
+        setImagesBoard={setImagesBoard}
+      />
     </View>
   );
 }
