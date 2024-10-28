@@ -10,7 +10,26 @@ import image6 from "../assets/images/6.jpg"
 import image7 from "../assets/images/7.jpg"
 import image8 from "../assets/images/8.jpg"
 
-const GameBoard = ({setWrongFlips,shuffeledImages,setShuffeledImages,imagesBoard,setImagesBoard,gameFinished,setGameFinished}) => {
+import image01 from "../assets/images/01.jpg"
+import image02 from "../assets/images/02.jpg"
+import image03 from "../assets/images/03.jpg"
+import image04 from "../assets/images/04.jpg"
+import image05 from "../assets/images/05.jpg"
+import image06 from "../assets/images/06.jpg"
+import image07 from "../assets/images/07.jpg"
+import image08 from "../assets/images/08.jpg"
+import image09 from "../assets/images/09.jpg"
+import image10 from "../assets/images/10.jpg"
+import image11 from "../assets/images/11.jpg"
+import image12 from "../assets/images/12.jpg"
+import image13 from "../assets/images/13.jpg"
+import image14 from "../assets/images/14.jpg"
+import image15 from "../assets/images/15.jpg"
+import image16 from "../assets/images/16.jpg"
+import image17 from "../assets/images/17.jpg"
+import image18 from "../assets/images/18.jpg"
+
+const GameBoard = ({level,setWrongFlips,shuffeledImages,setShuffeledImages,imagesBoard,setImagesBoard,gameFinished,setGameFinished}) => {
 
 	const initialCompareSet = [
 		{name:"first",item:'0',active:false},
@@ -35,8 +54,11 @@ const GameBoard = ({setWrongFlips,shuffeledImages,setShuffeledImages,imagesBoard
 	},[gameFinished]);
 
 	// ======================================================
-	const imagesSources = [
+	const easyImagesSources = [
 		image1, image2, image3, image4, image5, image6, image7, image8
+	];
+	const hardImagesSources = [
+		image01, image02, image03, image04, image5, image06, image07, image08,image09 ,image10 ,image11 ,image12 ,image13 ,image14, image15 , image16, image17, image18
 	];
 
 	const testGameComplete = () => {
@@ -93,13 +115,14 @@ const GameBoard = ({setWrongFlips,shuffeledImages,setShuffeledImages,imagesBoard
 
 	return (
 		<div className="p-5 xs:[border:2px] flex justify-center">
-			<div className="grid grid-cols-4 xs:gap-2 md:gap-6">
+			<div className={level=="easy" ? "grid grid-cols-4 xs:gap-2 md:gap-6" : "grid grid-cols-6 xs:gap-2 md:gap-3"}>
 			{
 				shuffeledImages.map((item,index)=>(
 					<ImageCard 
+						level={level}
 					    key={index} 
-                        src={imagesSources[item.substring(0,1)-1]}
-                        itemNumber={item.substring(0,1)}
+                        src={ level=="easy" ? easyImagesSources[item.substring(0,1)-1] : hardImagesSources[item.substring(0,2)-1]}
+                        itemNumber={level=="easy" ? item.substring(0,1) : item.substring(0,2)}
                         imagesBoard={imagesBoard}
                         setImagesBoard={setImagesBoard}
                         showImageInBoard={getImageBoardShowItem(index)}

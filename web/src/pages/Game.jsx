@@ -15,15 +15,19 @@ const Game = () => {
 	const [gameFinished , setGameFinished] = useState(false);
 
 	const newEasyGame = () => {
+		setLevel("easy");
 		setShuffeledImages(()=>getShuffledEasyImages());
 		setWrongFlips(0); 
 		setImagesBoard(()=>createEasyBoard())
+		setGameFinished(false);
 	}
 
 	const newHardGame = () => {
+		setLevel("hard");
 		setShuffeledImages(() => getShuffledHardImages());
 		setWrongFlips(0);
-		setImagesBoard(() => createHardBoard())
+		setImagesBoard(() => createHardBoard());
+		setGameFinished(false);
 	}
 
 	return (

@@ -1,7 +1,12 @@
 import {useState} from 'react';
 import q_mark from "../assets/images/question.jpg"
 
-const ImageCard = ({src,itemNumber,imagesBoard,setImagesBoard,showImageInBoard,index, compareSet,setCompareSet,waiting,setWaiting,allowPress,setAllowPress}) => {
+const ImageCard = ({level ,src,itemNumber,imagesBoard,setImagesBoard,showImageInBoard,index, compareSet,setCompareSet,waiting,setWaiting,allowPress,setAllowPress}) => {
+
+	// console.log('index' , index);
+	console.log('itemNumber' , itemNumber);
+	// console.log('src' , src);
+
 
 	// compare two current clicked images 
 	const handlePress = () => {
@@ -47,7 +52,8 @@ const ImageCard = ({src,itemNumber,imagesBoard,setImagesBoard,showImageInBoard,i
 				onClick={handlePress}
 				disabled={showImageInBoard}
 			>
-				<div className="bg-red-300 [border-radius:9%] w-[90px] h-[90px] [overflow:hidden] [border:1px_solid_#ccc]">
+				<div className={level=="easy" ?"bg-red-300 [border-radius:9%] w-[90px] h-[90px] [overflow:hidden] [border:1px_solid_#ccc]" :
+				"bg-red-300 [border-radius:9%] w-[80px] h-[80px] [overflow:hidden] [border:1px_solid_#ccc]"}>
 					
 					{   showImageInBoard 
 						?   <img  
