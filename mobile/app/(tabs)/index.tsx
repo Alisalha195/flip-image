@@ -24,9 +24,10 @@ export default function HomeScreen() {
 
   const [level, setLevel] = useState("easy");
   const [wrongFlips, setWrongFlips] = useState(0);
+  
   const [shuffeledImages,setShuffeledImages] = useState(()=> level=="easy" ? getShuffledEasyImages() : getShuffledHardImages() );
   
-  const [imagesBoard, setImagesBoard] = useState(()=> level=="easy" ? createEasyBoard() : createHardBoard();
+  const [imagesBoard, setImagesBoard] = useState(()=> level=="easy" ? createEasyBoard() : createHardBoard());
 
   const newEasyGame = () => {
     setShuffeledImages(()=>getShuffledEasyImages());
@@ -38,7 +39,7 @@ export default function HomeScreen() {
     setShuffeledImages(() => getShuffledHardImages());
     setWrongFlips(0);
     setImagesBoard(() => createHardBoard())
-    }
+  }
 
   return (
     <View style={{backgroundColor:"#555", height:"100vh"}}>
