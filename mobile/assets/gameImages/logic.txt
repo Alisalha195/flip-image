@@ -1,0 +1,37 @@
+
+[Ready state] {
+	waiting = false
+	compareSet = [{first , 0, false},{second ,99 ,false}]
+}
+
+[first click state ] {
+	if(NOT waiting AND compareSet[0].empty) {
+		waiting = true
+		compareSet = [{first , firstItem, true},{second ,99 ,false}]
+		showImage = true
+	}
+	
+}
+
+[second click state ] {
+	if(waiting AND compareSet[0].fulfilled) {
+		compareSet = [{first , firstItem, true},{second ,99 ,false}]
+		showImage = true
+		stopClicking()
+		comapreImages()
+			if(equal)
+				modifyBoard
+				reset(waiting,compareSet)
+			else
+				dont modifyBoard
+				reset(waiting,compareSet)
+	}
+	
+}
+
+[third click state ] {
+	if(NOT waiting AND compareSet[0].fulfilled AND compareSet[1].fulfilled) {
+		compareSet = [{first , firstItem, true},{second ,99 ,false}]
+	}
+	
+}
