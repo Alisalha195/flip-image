@@ -27,7 +27,7 @@ export const getShuffledHardImages = () => {
   const shuffledCopy = shuffle(hardLevelImages);
   
   shuffledHardImages = [...shuffledBase, ...shuffledCopy];
-  finalHardShuffledImages = shuffle(shuffledImages);
+  finalHardShuffledImages = shuffle(shuffledHardImages);
   // const shuffeledImagesObjectToUse = [shuffeledImagesToUse.map((item,index)=> ({id:index , name:item}))]
   return finalHardShuffledImages;
 }
