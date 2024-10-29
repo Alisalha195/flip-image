@@ -3,7 +3,6 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { View, Text, StyleSheet,FlatList, ScrollView } from 'react-native';
 
-// import ParallaxScrollView from '@/components/ParallaxScrollView';
 
 import img1 from "@/assets/gameImages/1.jpg"
 import img2 from "@/assets/gameImages/2.jpg"
@@ -51,21 +50,16 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
     {name:"first",item:'0',active:false},{name:"second",item:'99',active:false}  
   ];
   
-  console.log("board :",imagesBoard)
   const [compareSet ,setCompareSet] = useState(initialCompareSet);
   const [allowPress, setAllowPress] = useState(true)
   
   const [waiting, setWaiting] = useState(false)
-  // const [ , setGameFinished] = useState(false);
-
-  // const [openSuccessImage,setOpenSuccessImage] = useState()
 
   // compare cards
   useEffect(()=> {  
     // console.log("COMPARING.......")
     compare(compareSet[0].item,compareSet[1].item)
     testGameComplete();
-    // console.log("BOARD",imagesBoard)
   },[compareSet[0].active , compareSet[1].active ])
   
   // Game Finished
@@ -74,17 +68,6 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
       console.log("Game Finished");
     }
   },[gameFinished]);
-// ======================================================
-  // const imagesSources = [
-  //   require("@/assets/gameImages/1.jpg"),
-  //   require("@/assets/gameImages/2.jpg"),
-  //   require("@/assets/gameImages/3.jpg"),
-  //   require("@/assets/gameImages/4.jpg"),
-  //   require("@/assets/gameImages/5.jpg"),
-  //   require("@/assets/gameImages/6.jpg"),
-  //   require("@/assets/gameImages/7.jpg"),
-  //   require("@/assets/gameImages/8.jpg"),
-  // ];
 
   const easyImagesSources = [
   	img1, img2, img3 , img4, img5, img6 , img7, img8
@@ -96,15 +79,12 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
 
 
   const testGameComplete = () => {
-    // console.log("imagesBoard in testing finished ",imagesBoard)
     let finished = true;
     imagesBoard.map(item => {
       if (!item.done) {
         finished = false;
-        // break;
       }  
     });
-      // console.log("FINISHED!!!!",finished);
     setGameFinished(finished);
   }
 
@@ -116,10 +96,9 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
 
       if(firstItem == secondItem) {
         
-        console.log("BOTH ARE EQUAL");
+        // console.log("BOTH ARE EQUAL");
          
         const updatedBoardItem = {imgName:firstImgName, done:true,show:true};
-        // console.log("updatedBoardItem",updatedBoardItem)
 
         setImagesBoard(imagesBoard.map((boardItem)=>(boardItem.imgName == firstImgName ? updatedBoardItem : boardItem)));
         
@@ -128,7 +107,6 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
       } else {
         setWrongFlips(prev => prev + 1);
         const updatedBoardFirstItem = {imgName:firstImgName, done:false, show:false};
-        // console.log("updatedBoardFirstItem",updatedBoardFirstItem)
 
         const updatedBoardSecondItem = {imgName:secondImgName, done:false,show:false};
 
@@ -164,12 +142,8 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
 
   const getImageBoardShowItem = (index) => {
     return imagesBoard[index].show
-    // imagesBoard.map((item)=>{
-    //   if(item.imgName == imgName) 
-    //     return item.show;
-    // })
   } 
-// =============================================================
+
   return (
     <View style={styles.boardContainer}>
       {level=="easy" 
@@ -198,7 +172,6 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
                             setAllowPress={setAllowPress}
                             />
          
-        // renderItem={(item) => <Text style={{color:"#444"}}>item</Text>
         }
       />
         : <FlatList
@@ -226,7 +199,6 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
                             setAllowPress={setAllowPress}
                             />
          
-        // renderItem={(item) => <Text style={{color:"#444"}}>item</Text>
         }
       />
       }
@@ -253,10 +225,7 @@ const styles = StyleSheet.create({
     padding:20
   },
   grid: {
-  	// flex:4,
-    // :"100%",
   	padding:10,
-    // backgroundColor: "#0011aa",
   },
   completeText: {
     color:"#448866",

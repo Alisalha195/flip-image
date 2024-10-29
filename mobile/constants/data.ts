@@ -18,7 +18,7 @@ export const getShuffledEasyImages = () => {
 	
 	shuffledEasyImages = [...shuffledBase , ...shuffledCopy];
 	finalEasyShuffledImages = shuffle(shuffledEasyImages);
-	// const shuffeledImagesObjectToUse = [shuffeledImagesToUse.map((item,index)=> ({id:index , name:item}))]
+
 	return finalEasyShuffledImages;
 }
 
@@ -28,7 +28,7 @@ export const getShuffledHardImages = () => {
   
   shuffledHardImages = [...shuffledBase, ...shuffledCopy];
   finalHardShuffledImages = shuffle(shuffledHardImages);
-  // const shuffeledImagesObjectToUse = [shuffeledImagesToUse.map((item,index)=> ({id:index , name:item}))]
+  
   return finalHardShuffledImages;
 }
 
@@ -37,7 +37,7 @@ export const createEasyBoard = () => {
     finalEasyShuffledImages.map((item)=> {
       board.push({imgName:item, done:false, show:false})
     });
-    console.log("board",board);
+    
     return board;
 }
 
@@ -46,6 +46,6 @@ export const createHardBoard = () => {
   finalHardShuffledImages.map((item) => {
     board.push({ imgName: item, done: false, show: false })
   });
-  console.log("board", board);
+  
   return board;
 }
