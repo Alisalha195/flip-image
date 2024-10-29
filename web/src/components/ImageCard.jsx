@@ -1,10 +1,10 @@
 import {useState} from 'react';
 import q_mark from "../assets/images/question.jpg"
 
-const ImageCard = ({level ,src,itemNumber,imagesBoard,setImagesBoard,showImageInBoard,index, compareSet,setCompareSet,waiting,setWaiting,allowPress,setAllowPress}) => {
+const ImageCard = ({ src,itemNumber,imagesBoard,setImagesBoard,showImageInBoard,index, compareSet,setCompareSet,waiting,setWaiting,allowPress,setAllowPress}) => {
 
 	// console.log('index' , index);
-	console.log('itemNumber' , itemNumber);
+	// console.log('itemNumber' , itemNumber);
 	// console.log('src' , src);
 
 

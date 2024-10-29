@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, StyleSheet, Image,Pressable } from 'react-native'
 
 import {useState, useEffect} from 'react'
-const ImageCard = ({src, itemNumber,imagesBoard,setImagesBoard,compareSet, setCompareSet ,waiting ,showImageInBoard, setWaiting, allowPress, setAllowPress, index}) => {
+const ImageCard = ({level ,src, itemNumber,imagesBoard,setImagesBoard,compareSet, setCompareSet ,waiting ,showImageInBoard, setWaiting, allowPress, setAllowPress, index}) => {
 
   // console.log("imagesBoard : ",imagesBoard);
 
@@ -93,8 +93,8 @@ const ImageCard = ({src, itemNumber,imagesBoard,setImagesBoard,compareSet, setCo
       {/*<Image source={require("@/assets/gameImages/question.jpg")} style={styles.image} />*/}
       <View style={styles.container}>
         {showImageInBoard 
-          ? <Image source={src} style={styles.image} />
-          : <Image source={require("@/assets/gameImages/question.jpg")} style={styles.image} />
+          ? <Image source={src} style={level=="easy"? styles.imageEasy :styles.imageHard} />
+          : <Image source={require("@/assets/gameImages/question.jpg")} style={level=="easy"? styles.imageEasy :styles.imageHard} />
         }
       
       </View>
@@ -105,7 +105,7 @@ const ImageCard = ({src, itemNumber,imagesBoard,setImagesBoard,compareSet, setCo
 
 const styles = StyleSheet.create({
   container : {
-    flex:4,
+    flex:1,
     justifyContent: "space-arround",
     width:"100%" ,
     height:"100vh " ,
@@ -115,14 +115,22 @@ const styles = StyleSheet.create({
     // backgroundColor: "#000",
     // borderRadius:20,
   },
-  image:{
+  imageEasy:{
     alignSelf: 'center',
     width:70,
     height:70,
     margin:2,
     borderRadius:9,
     // backgroundImage: url(src)
-  }
+  },
+  imageHard:{
+    alignSelf: 'center',
+    width:44,
+    height:44,
+    margin:2,
+    borderRadius:9,
+    // backgroundImage: url(src)
+  },
 });
 export default ImageCard;
 
