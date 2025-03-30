@@ -3,6 +3,9 @@ import Control from "../components/Control";
 import GameBoard from "../components/GameBoard";
 import {getShuffledEasyImages,getShuffledHardImages, createEasyBoard, createHardBoard} from "../constants/index"
 
+import Confetti from 'react-confetti'
+
+
 const Game = () => {
 
 	const [level, setLevel] = useState("easy");
@@ -31,7 +34,12 @@ const Game = () => {
 	}
 
 	return (
-		<div className="flex xs:flex-col">
+		<div className="flex xs:flex-col ">
+         {
+            gameFinished && <Confetti 
+                              gravity={0.3}
+                              /> 
+         }
 			<Control 
 				wrongFlips={wrongFlips}
 				newEasyGame={newEasyGame}

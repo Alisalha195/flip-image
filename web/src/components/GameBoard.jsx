@@ -114,8 +114,9 @@ const GameBoard = ({ level, setWrongFlips, shuffeledImages, setShuffeledImages, 
    }
 
    return (
-      <div className="p-5 xs:[border:2px] flex justify-center">
-         <div className={level == "easy" ? "grid grid-cols-4 xs:gap-2 md:gap-6" : "grid grid-cols-6 xs:gap-2 md:gap-3"}>
+      <div className={`p-5 xs:[border:2px]  flex justify-center bg-[#999] ${level === 'easy' ? "bg-[#8191ee]" : "bg-[#d4a1b1]" }`}>
+         <div className={level == "easy" ? "grid grid-cols-4 xs:gap-2 md:gap-6  " : "grid grid-cols-6 xs:gap-2 md:gap-3"}>
+            
             {
                shuffeledImages.map((item, index) => (
                   <ImageCard

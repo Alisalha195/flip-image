@@ -52,8 +52,8 @@ const ImageCard = ({ src,level, itemNumber, imagesBoard, setImagesBoard, showIma
          onClick={handlePress}
          disabled={showImageInBoard}
       >
-         <div className={level == "easy" ? "bg-red-300 [border-radius:9%] w-[90px] h-[90px] [overflow:hidden] [border:1px_solid_#ccc]" :
-            "bg-red-300 [border-radius:9%] w-[80px] h-[80px] [overflow:hidden] [border:1px_solid_#ccc]"}>
+         <div className={level == "easy" ? "bg-red-300 [border-radius:9%] md:w-[100px] md:h-[100px] sm:w-[80px] sm:h-[80px] xs:w-[60px] xs:h-[60px] [overflow:hidden] [border:1px_solid_#ccc]" :
+            "bg-red-300 [border-radius:9%] md:w-[74px] md:h-[74px] sm:w-[65px] sm:h-[65px]  xs:w-[45px] xs:h-[45px]  [overflow:hidden] [border:1px_solid_#ccc]"}>
 
             {showImageInBoard
                ? <img
