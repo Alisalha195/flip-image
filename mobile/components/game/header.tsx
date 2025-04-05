@@ -1,6 +1,18 @@
 import {View, Text, StyleSheet ,Pressable} from 'react-native'
+import MenuList from './MenuList'
 
 const Header = ({wrongFlips,  newEasyGame,newHardGame}) => {
+   
+   const menu = [
+      {
+         text:"4x4",
+         method: newEasyGame
+      },
+      {
+         text:"6x6",
+         method: newHardGame
+      },
+   ]
   return (  
     <View style={styles.container}>
       <Text style={styles.title} >Flip-Game</Text>
@@ -8,15 +20,12 @@ const Header = ({wrongFlips,  newEasyGame,newHardGame}) => {
         <Text style={styles.wrongFlips}>wrong tests: {wrongFlips}
         </Text>
       </View>
-      <View style={styles.control}>
+      <View style={[styles.controlUp, {marginTop:3}]}>
         
-        <Pressable style={styles.resetEasy} onPress={()=>newEasyGame()}>
-          <Text style={styles.resetText}>new game(easy)</Text>
-        </Pressable>
-        <Pressable style={styles.resetHard} onPress={()=>newHardGame()}>
-          <Text style={styles.resetText}>new game(hard)</Text>
-        </Pressable>
+        <MenuList menu={menu} />
+        
       </View>
+      
 
     </View>
   )
@@ -24,8 +33,8 @@ const Header = ({wrongFlips,  newEasyGame,newHardGame}) => {
 
 const styles = StyleSheet.create({
   container : {
-    paddingTop:30,
-    paddingBottom:30,
+    paddingTop:12,
+    paddingBottom:12,
     backgroundColor: "#eeeeee",
     borderBottomWidth:2,
     borderBottomColor:"#777",

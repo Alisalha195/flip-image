@@ -1,5 +1,5 @@
+import { MenuProvider  } from'react-native-popup-menu';
 
-import React from 'react';
 import { Image, 
   StyleSheet, 
   Platform ,
@@ -45,6 +45,7 @@ export default function HomeScreen() {
   }
 
   return (
+   <MenuProvider >
     <View style={{backgroundColor:"#555", height:"100vh"}}>
       <Header wrongFlips={wrongFlips} newEasyGame={newEasyGame} newHardGame={newHardGame}/>
       <GameBoard 
@@ -58,6 +59,7 @@ export default function HomeScreen() {
         setGameFinished={setGameFinished}
       />
     </View>
+    </MenuProvider>
   );
 }
 

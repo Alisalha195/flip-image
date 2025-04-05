@@ -145,7 +145,8 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
   } 
 
   return (
-    <View style={styles.boardContainer}>
+   <View style={{height:"100%"}}>
+    <View style={[styles.boardContainer, {backgroundColor: level=='easy'?"#00aaff":"#00aa55" , flex:1}]}>
       {level=="easy" 
         ? <FlatList 
         key={"_"}
@@ -212,6 +213,7 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
       </View>
 
     </View>
+    </View>
   )
 }
 
@@ -219,13 +221,15 @@ const styles = StyleSheet.create({
   boardContainer : {
   	width:"100%",
   	height:"100vh",
-    // flex:4,
-    justifyContent: "space-arround",
-    backgroundColor: "#00aaaa",
-    padding:20
+    
+    justifyContent: 'flex-end',
+    
+    padding:20,
   },
   grid: {
   	padding:10,
+   alignSelf:"center",
+     alignItems: 'center',
   },
   completeText: {
     color:"#448866",
