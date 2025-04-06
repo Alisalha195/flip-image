@@ -3,7 +3,7 @@ import React from 'react';
 import {useState, useEffect} from 'react';
 import { View, Text, StyleSheet,FlatList, ScrollView } from 'react-native';
 
-
+import ConfettiCannon from 'react-native-confetti-cannon';
 import img1 from "@/assets/gameImages/1.jpg"
 import img2 from "@/assets/gameImages/2.jpg"
 import img3 from "@/assets/gameImages/3.jpg"
@@ -146,9 +146,9 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
 
   return (
    <View style={{height:"100%"}}>
-    <View style={[styles.boardContainer, {backgroundColor: level=='easy'?"#00aaff":"#00aa55" , flex:1}]}>
+    <View style={[styles.boardContainer, {backgroundColor: level=='easy'?"#00aaff":"#00aa55", paddingTop:"30%" , flex:1}]}>
       {level=="easy" 
-        ? <FlatList 
+        ? <FlatList
         key={"_"}
         data={shuffeledImages}
         horizontal={false}  
@@ -207,9 +207,10 @@ const GameBoard = ({level, setWrongFlips, shuffeledImages, setShuffeledImages, i
 
       
       <View>
-        <Text style={styles.completeText}>
+        {/* <Text style={styles.completeText}>
           {gameFinished && "Game Complete"}
-        </Text>
+        </Text> */}
+        {gameFinished && <ConfettiCannon count={400} origin={{x: -10, y: 0}} />}
       </View>
 
     </View>
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
   grid: {
   	padding:10,
    alignSelf:"center",
-     alignItems: 'center',
+   
   },
   completeText: {
     color:"#448866",
