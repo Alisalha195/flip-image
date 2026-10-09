@@ -1,29 +1,64 @@
+
 import {View, Text, StyleSheet ,Pressable} from 'react-native'
 import MenuList from './MenuList'
+import { useEffect, useState } from 'react'
 
-const Header = ({wrongFlips,  newEasyGame,newHardGame}) => {
+const Header = ({wrongFlips,  newEasyGame,newHardGame, estimatedFlips, setModalVisible}) => {
    
+   const [danger , setDanger] = useState(false);
    const menu = [
       {
          text:"4x4",
-         method: newEasyGame
+         method: newEasyGame,
+         estimatedFlipsCount : 8
       },
       {
          text:"6x6",
-         method: newHardGame
+         method: newHardGame,
+         estimatedFlipsCount : 18
       },
    ]
+   
+   useEffect(() => {
+      
+      if(wrongFlips > 0 && wrongFlips == (estimatedFlips - 1))
+         
+         setDanger(true);
+         
+      if(wrongFlips == 0)
+         setDanger(false);
+   }, [wrongFlips]);
   return (  
     <View style={styles.container}>
-      <Text style={styles.title} >Flip-Game</Text>
-      <View style={styles.controlUp}>
-        <Text style={styles.wrongFlips}>wrong tests: {wrongFlips}
-        </Text>
-      </View>
-      <View style={[styles.controlUp, {marginTop:3}]}>
+      <Text style={styles.title} >FLIPPY</Text>
+      
+      <View style={{flexDirection : "row", justifyContent : "space-between"}}>
         
-        <MenuList menu={menu} />
-        
+        {/*left*/}
+        <View>
+          
+          <View style={styles.controlUp}>
+            <Text style={styles.wrongFlips}>wrong tests: {wrongFlips}
+            </Text>
+          </View>
+          <View style={[styles.controlUp, {marginTop:3}]}>
+
+            <MenuList menu={menu} />
+
+          </View>
+
+        </View>
+
+        {/*right*/}
+        <View>
+          <View style={[styles.controlUp, {marginRight:6}]}>
+             <Pressable onPress={() => setModalVisible(true)}>
+                <Text style={[styles.wrongFlips , {color: danger ? "#aa0000" : "#229911"}]}>estimated flips: {estimatedFlips}</Text>
+             </Pressable>
+            
+          </View>
+        </View>
+
       </View>
       
 
@@ -41,11 +76,14 @@ const styles = StyleSheet.create({
   },
   title : {
     
-    fontSize:20,
+    fontSize:25,
     fontWeight:"bold",
-    color:"#555",
+    color:"#505c9a",
     alignSelf: "center",
     paddingBottom:30,
+    textShadowColor: "#ddd", 
+    textShadowOffset: {width: 3, height: 3 },
+    letterSpacing:-1
   },
   controlUp: {
     display:"flex",

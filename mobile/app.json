@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "flip-image",
-    "slug": "flip-image",
-    "version": "2.0.0",
+    "name": "flip-image2",
+    "slug": "flip-image2",
+    "version": "3.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "myapp",
@@ -20,7 +20,7 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.alisalha195.flipimage"
+      "package": "com.alisalha195.flipimage3"
     },
     "web": {
       "bundler": "metro",
@@ -36,7 +36,7 @@
     },
     "extra": {
       "eas": {
-        "projectId": "337e9d2c-c66e-4dd9-a9ed-f2c13c1e1ec8"
+        "projectId": "97de4fad-0304-48b2-a06d-53e471fa596e"
       }
     }
   }
